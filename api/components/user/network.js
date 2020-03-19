@@ -35,6 +35,16 @@ router.get('/:id', function (req, res) {
     })
 })
 
+router.put('/:id', function (req, res) {
+  Controller.upsert(req.body)
+    .then((itemId) => {
+      response.success(req, res, itemId, 200);
+    })
+    .catch((err) => {
+      response.error(req, res, err.message, 500);
+    })
+})
+
 router.delete('/:id', function (req, res) {
   Controller.remove(req.params.id)
     .then((item) => {
