@@ -34,7 +34,9 @@ module.exports = function(injectedStore) {
       })
     }
 
-    return store.upsert(TABLE, user);
+    store.upsert(TABLE, user);
+
+    return user;
   }
 
   function remove(id) {
