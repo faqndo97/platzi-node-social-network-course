@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const auth = require('../../../auth');
+const error = require('../../../utils/error');
 
 const TABLE = 'auth';
 
@@ -14,7 +15,7 @@ module.exports = function(injectedStore) {
         if (result === true) {
           return auth.sign(data);
         } else {
-          throw new Error('Informacion invalida');
+          error('Unauthorized', 401)
         }
       })
   }

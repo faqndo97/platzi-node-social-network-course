@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const config = require('../config');
+const error = require('../utils/error');
 const secret = config.jwt.secret;
 
 function sign(data) {
@@ -11,7 +12,7 @@ check = {
     const decoded = decodeHeader(req);
     
     if (decoded.id !== owner) {
-      throw new Error('No puedes hacer esto');
+      error('Unauthorized', 401);
     }
   }
 }
@@ -33,11 +34,11 @@ function verify(token) {
 function getToken(authorization) {
   // Validations
   if (!authorization) {
-    throw new Error('Token is needed');
+    error('Token is needed', 400);
   }
 
   if (authorization.indexOf('Bearer') === -1) {
-    throw new Error('Invalid format');
+    error('Invalid format', 400);
   }
 
   // Get token
