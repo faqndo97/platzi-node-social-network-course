@@ -15,13 +15,15 @@ module.exports = function(injectedStore) {
   }
 
   async function upsert(data) {
+    let action = 'INSERT';
     const user = {
       name: data.name,
       username: data.username
     }
 
     if (data.id) {
-      user.id = data.id
+      user.id = data.id;
+      action = 'UPDATE';
     } else {
       user.id = nanoid();
     }
@@ -34,7 +36,7 @@ module.exports = function(injectedStore) {
       })
     }
 
-    store.upsert(TABLE, user);
+    store.upsert(TABLE, user, action);
 
     return user;
   }
@@ -43,10 +45,27 @@ module.exports = function(injectedStore) {
     return store.remove(TABLE, id);
   }
 
+  function follow(from, to) {
+    return store.upsert(TABLE + '_follows', {
+      user_from: from,
+      user_to: to
+    }, 'INSERT')
+  }
+
+  function following(user) {
+    const join = [];
+    join[TABLE] = 'user_to';
+    const query = { user_from: user };
+    
+    return await store.query(TABLE + '_follow', query, join);
+  }
+
   return {
     list,
     get,
     upsert,
-    remove
+    remove,
+    follow,
+    following
   }
 }
