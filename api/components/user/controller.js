@@ -52,7 +52,7 @@ module.exports = function(injectedStore) {
     }, 'INSERT')
   }
 
-  function following(user) {
+  async function following(user) {
     const join = [];
     join[TABLE] = 'user_to';
     const query = { user_from: user };
