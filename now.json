@@ -6,12 +6,12 @@
     "MYSQL_PASSWORD": "ph7BveGtIj",
     "MYSQL_DATABASE": "73ZPHee3tO",
     "JWT_SECRET": "fZUXKvCekKRD063oHkjP86cM0LQ0OuUAFAcK7YZHl96gZ6CTfKz1x9rghVnQcCt",
-    "API_PORT": 3000,
-    "REMOTE_DB": false,
+    "API_PORT": "3000",
+    "REMOTE_DB": "false",
     "MYSQL_SRV_PROTOCOL": "http",
     "MYSQL_SRV_HOST": "localhost",
-    "MYSQL_SRV_PORT": 3001,
-    "POST_PORT": 3002
+    "MYSQL_SRV_PORT": "3001",
+    "POST_PORT": "3002"
   },
   "builds": [
     {
