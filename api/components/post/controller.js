@@ -10,9 +10,9 @@ module.exports = function(injectedStore) {
     return store.list(TABLE);
   }
 
-  // function get(id) {
-  //   return store.get(TABLE, id);
-  // }
+  function get(id) {
+    return store.get(TABLE, id);
+  }
 
   // async function upsert(data) {
   //   let action = 'INSERT';
@@ -41,31 +41,14 @@ module.exports = function(injectedStore) {
   //   return user;
   // }
 
-  // function remove(id) {
-  //   return store.remove(TABLE, id);
-  // }
-
-  // function follow(from, to) {
-  //   return store.upsert(TABLE + '_follows', {
-  //     user_from: from,
-  //     user_to: to
-  //   }, 'INSERT')
-  // }
-
-  // function following(user) {
-  //   const join = [];
-  //   join[TABLE] = 'user_to';
-  //   const query = { user_from: user };
-    
-  //   return await store.query(TABLE + '_follow', query, join);
-  // }
+  function remove(id) {
+    return store.remove(TABLE, id);
+  }
 
   return {
     list,
-    // get,
+    get,
     // upsert,
-    // remove,
-    // follow,
-    // following
+    remove
   }
 }

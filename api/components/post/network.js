@@ -22,13 +22,13 @@ router.get('/', function (req, res, next) {
 //     .catch(next)
 // })
 
-// router.get('/:id', function (req, res, next) {
-//   Controller.get(req.params.id)
-//     .then((item) => {
-//       response.success(req, res, item, 200);
-//     })
-//     .catch(next)
-// })
+router.get('/:id', function (req, res, next) {
+  Controller.get(req.params.id)
+    .then((item) => {
+      response.success(req, res, item, 200);
+    })
+    .catch(next)
+})
 
 // router.put('/', secure('update'), function (req, res, next) {
 //   Controller.upsert(req.body)
@@ -38,12 +38,12 @@ router.get('/', function (req, res, next) {
 //     .catch(next)
 // })
 
-// router.delete('/:id', function (req, res, next) {
-//   Controller.remove(req.params.id)
-//     .then((item) => {
-//       response.success(req, res, item, 200);
-//     })
-//     .catch(next)
-// })
+router.delete('/:id', function (req, res, next) {
+  Controller.remove(req.params.id)
+    .then((item) => {
+      response.success(req, res, item, 200);
+    })
+    .catch(next)
+})
 
 module.exports = router;
