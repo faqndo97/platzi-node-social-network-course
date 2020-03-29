@@ -21,7 +21,7 @@
     },
     {
       "src": "/api/posts(.*)",
-      "dest": "/api/index-posts.js"
+      "dest": "/posts/index-posts.js"
     }
   ]
 }
