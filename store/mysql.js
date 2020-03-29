@@ -72,6 +72,21 @@ function update (table, data) {
   })
 }
 
+function upsert(table, data, action) {
+  if (action === 'UPDATE') return update(table, data);
+
+  return insert(table, data);
+}
+
+function remove(table, id) {
+  return new Promise((resolve, reject) => {
+    connection.query(`DELETE FROM ${table} WHERE id = '${id}'`, (err, result) => {
+      if (err) return reject(err);
+      resolve(JSON.parse(JSON.stringify(result)));
+    })
+  })
+}
+
 function query(table, query, join) {
   let joinQuery = '';
 
@@ -96,16 +111,13 @@ function query(table, query, join) {
   })
 }
 
-function upsert(table, data, action) {
-  if (action === 'UPDATE') return update(table, data);
-
-  return insert(table, data);
-}
-
 
 module.exports = {
   list,
   get,
+  insert,
+  update,
   upsert,
+  remove,
   query
 }
