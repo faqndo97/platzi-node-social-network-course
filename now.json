@@ -6,7 +6,7 @@
       "use": "@now/node"
     },
     {
-      "src": "posts/index.js",
+      "src": "posts/index-posts.js",
       "use": "@now/node"
     }
   ],
