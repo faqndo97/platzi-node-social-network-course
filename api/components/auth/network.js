@@ -11,6 +11,7 @@ router.post('/login', function (req, res, next) {
       console.log(token);
       response.success(req, res, token, 200);    
     })
+    .catch(next);
 })
 
 module.exports = router;
